@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import Logo from '../../Assets/images/logo.png';
 import CountryDropdown from '../CountryDropdown';
-import { IoSearch } from "react-icons/io5";
 import Button from '@mui/material/Button';
 import { FaRegUser } from "react-icons/fa6";
 import { IoBagHandle } from "react-icons/io5";
+import SearchBox from './SearchBox';
+import Navigation from './Navigation';
+
+
+
 const Header= ()=>{
     return (
 <>  
@@ -22,19 +26,18 @@ const Header= ()=>{
                 </div>
                 <div className="col-sm-10 d-flex align-items-center part2 ">
                     <CountryDropdown/>
-                    {/* Header Search Start Here */}
-                    <div className="headerSearch ml-3 mr-3">
-                        <input type="text" placeholder='Search for products'/>
-                        <Button> <IoSearch/> </Button>
-                    </div>
-                    {/* Header Search End Here */}
+
+                    <SearchBox/>
 
                     <div className="part3 d-flex align-items-center ml-auto">
 
                            <Button className='circle mr-3' ><FaRegUser/></Button>
-                          <div className="ml-auto cartTab">
+                          <div className="ml-auto cartTab d-flex align-items-center">
                              <span className='price'>$2.49</span>
-                           <Button className='circle ml-2' ><IoBagHandle/></Button>
+                           <div className='position-relative ml-2'>
+                            <Button className='circle' ><IoBagHandle/></Button>
+                            <span className='count d-flex align-items-center justify-content-center'>2</span>
+                           </div>
                     
                     
                           </div>
@@ -44,8 +47,15 @@ const Header= ()=>{
             </div>
         </div>
       </header>
+      <Navigation/>
 </div>
 </>
+
+
+
+
+
+
     )
 }
 
