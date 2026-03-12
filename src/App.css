@@ -1,100 +1,329 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Lato', sans-serif; font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
 }
 
-.bg-purple {background: #0425a7 !important;}
+.bg-purple { background: #0425a7 !important; }
 
 @media (min-width: 1300px) {
-  .container, .container-lg, .container-md, .container-sm, .container-xl {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
     max-width: 1200px;
   }
 }
 
-::-webkit-slider-thumb {background: #ccc !important;  }
-::-webkit-slider-track {background: transparent !important;  }
+::-webkit-slider-thumb { background: #ccc !important; }
+::-webkit-slider-track  { background: transparent !important; }
 
 
-
-
-.headerWrapper {border-bottom: 1px solid rgba(0, 0, 0, 0.2); padding-bottom: 10px; }
-.headerWrapper .top-strip {
-  height: 50px; /* adjust as needed */
-  display: flex; /* centers text vertically */
-  align-items: center; /* vertically centers text */
-  background: #2a63ff;
+/* ─────────────────────────────────────────
+   TOP STRIP
+───────────────────────────────────────── */
+.headerWrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
 }
-.headerWrapper .top-strip {padding: 8px 0px;position: relative;}
-.headerWrapper .top-strip p {color: #fff; font-size: 12px; font-weight: 500;}
- 
-.headerWrapper .header { width: 100%; height: auto ; padding:10px 0px; }
-  
-.logoWrapper img { width: 250px; margin-left: -150px; } 
 
-.headerWrapper .header .part2 .countryDrop{width:170px; height:60px; min-width: 170px; color:
-  black !important; border: 1px solid rgba(0, 0, 0, 0.2) !important; border-radius: 7px !important; padding: 10px 15px !important; }
-.headerWrapper .header .part2 .countryDrop{text-align:left; justify-content: flex-start; }
-.headerWrapper .header .part2 .countryDrop .label{font-size: 12px !important; text-transform:
-   capitalize !important; color:rgba(0, 0, 0, 0.4) !important; line-height: 16px;}
-.headerWrapper .header .part2 .countryDrop .name{font-size: 14px !important; text-transform:
-   capitalize !important; color:rgba(5, 99, 181, 0.6) !important; font-weight: 700; line-height: 20px;}
-.headerWrapper .header .part2 .countryDrop span.ml-auto svg{opacity: 0.7;}
-.headerSearch {width: 60%; height: 60px; background: #f3f4f7; padding: 10px; position: relative; border-radius: 30px; border: 1px solid rgba(0, 0, 0, 0.1) !important;}
-.headerSearch input { background: transparent !important; outline: none!important; 
-font-size: 18px; color: rgba(0, 0, 0, 0.8); width: 100%; height: 95%; border: none ; padding: 0px 20px !important;} 
+.headerWrapper .top-strip {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  background: #2a63ff;
+  padding: 0;
+}
+
+.headerWrapper .top-strip p {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
 
 
+/* ─────────────────────────────────────────
+   MAIN HEADER
+───────────────────────────────────────── */
+.headerWrapper .header {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  background: #fff;
+}
 
-.headerSearch input::-webkit-input-placeholder { color: rgba(0, 0, 0, 0.6); }
+/* ── LOGO — ORIGINAL, UNTOUCHED ── */
+.logoWrapper img {
+  width: 250px;
+  margin-left: -150px;
+}
 
-.headerSearch button { position: absolute; right: 15px; top: 10px; z-index: 100; min-width: 40px !important;
-   height:40px !important; width: 40px !important;border-radius: 50px !important; color: #000;  }
-.headerSearch button svg { font-size: 40px !important; color:#939393}
-  
-  
-   header .part3 .circle { min-width: 45px !important; height: 45px !important; width: 45px !important; border-radius: 50% !important; 
-    color: #000;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important; align-items: center; justify-content: center;}
-    header .part3 .circle svg { font-size: 16px !important;  }
-    .cartTab .price {font-size: 14px; color: rgba(0, 0, 0, 0.8); font-weight: 700;}
-    .cartTab button { background: #fff1ee !important; }
-    .cartTab button svg {  color: #ea2b0f !important; font-size: 27px; }
-    .cartTab .count { position: absolute; top: -4px; right: -2px; background: #ea2b0f; color: #fff; width: 17px; height: 17px; 
-      border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center;} 
 
-    .locationModal .MuiPaper-elevation{ padding: 13px; max-height: 500px !important; width:400px !important; overflow: hidden!important;}
-    
-
-    .locationModal .headerSearch {
-  position: relative !important; height: 40px !important; width: 100% !important;
+/* ─────────────────────────────────────────
+   PART 2 — country + search + part3
+───────────────────────────────────────── */
+.headerWrapper .header .part2 {
   display: flex !important;
   align-items: center !important;
-  background: rgba(0, 0, 0, 0.03) !important; 
-  border: 1.5px solid #e0e0e0;
-  border-radius: 10px!important;
-  padding: 8px 12px !important;
-  margin: 12px 0px !important;
-  transition: border-color 0.2s ease !important;}
+  gap: 16px;
+  padding-left: 0;
+}
 
-  .locationModal .headerSearch:focus-within {
-  border-color: #f8f8f7;   
-  background: #fff;}
 
-  .locationModal .headerSearch input {
+/* ─────────────────────────────────────────
+   COUNTRY / LOCATION DROPDOWN
+───────────────────────────────────────── */
+.headerWrapper .header .part2 .countryDrop {
+  flex-shrink: 0;
+  width: 170px;
+  min-width: 170px;
+  height: 56px;
+  color: black !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 10px 15px !important;
+  text-align: left;
+  justify-content: flex-start;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.headerWrapper .header .part2 .countryDrop:hover {
+  border-color: rgba(43, 190, 249, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(43, 190, 249, 0.08);
+}
+
+.headerWrapper .header .part2 .countryDrop .label {
+  font-size: 12px !important;
+  text-transform: capitalize !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+  line-height: 16px;
+}
+
+.headerWrapper .header .part2 .countryDrop .name {
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+  color: rgba(5, 99, 181, 0.6) !important;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.headerWrapper .header .part2 .countryDrop span.ml-auto svg {
+  opacity: 0.7;
+}
+
+
+/* ─────────────────────────────────────────
+   SEARCH BAR
+───────────────────────────────────────── */
+.headerSearch {
   flex: 1;
+  max-width: 520px;
+  min-width: 0;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding: 0 6px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.headerSearch:focus-within {
+  border-color: rgba(43, 190, 249, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(43, 190, 249, 0.08);
+  background: #fff;
+}
+
+.headerSearch input {
+  flex: 1;
+  background: transparent !important;
+  outline: none !important;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  height: 100%;
   border: none;
-  background: transparent;
-  outline: none;
-  font-size: 13px;
-  padding: 6px 8px;
-  color: #333;
-  line-height: 1.5;
+  padding: 0 !important;
+  font-family: 'Lato', sans-serif;
+}
+
+.headerSearch input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.headerSearch button {
+  flex-shrink: 0;
+  position: relative !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  width: 36px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #2bbef9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: none !important;
+}
+
+.headerSearch button:hover {
+  background: transparent !important;
+  color: #1aaee8 !important;
+}
+
+.headerSearch button svg {
+  font-size: 22px !important;
+  color: #2bbef9 !important;
+}
+
+
+/* ─────────────────────────────────────────
+   PART 3 — USER ICON + CART
+───────────────────────────────────────── */
+header .part3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+header .part3 .circle {
+  min-width: 45px !important;
+  height: 45px !important;
+  width: 45px !important;
+  border-radius: 50% !important;
+  color: #555 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fff !important;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+header .part3 .circle:hover {
+  border-color: #2bbef9 !important;
+  color: #2bbef9 !important;
+  background: #f0faff !important;
+}
+
+header .part3 .circle svg {
+  font-size: 16px !important;
+}
+
+.cartTab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cartTab .price {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+.cartTab button {
+  min-width: 45px !important;
+  height: 45px !important;
+  width: 45px !important;
+  border-radius: 50% !important;
+  background: #fff1ee !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.cartTab button:hover {
+  background: #ffddd5 !important;
+  transform: scale(1.06);
+}
+
+.cartTab button svg {
+  color: #ea2b0f !important;
+  font-size: 27px !important;
+}
+
+.cartTab .count {
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  background: #ea2b0f;
+  color: #fff;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  line-height: 1;
+}
+
+
+/* ─────────────────────────────────────────
+   LOCATION MODAL
+───────────────────────────────────────── */
+.locationModal .MuiPaper-elevation {
+  padding: 20px;
+  max-height: 520px !important;
+  width: 420px !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+
+.locationModal .headerSearch {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 44px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #f5f5f5 !important;
+  border: 1.5px solid #e2e2e2 !important;
+  border-radius: 10px !important;
+  padding: 0 8px 0 14px !important;
+  margin: 12px 0 10px 0 !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.locationModal .headerSearch:focus-within {
+  border-color: #2bbef9 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(43, 190, 249, 0.10) !important;
+}
+
+.locationModal .headerSearch input {
+  flex: 1 !important;
+  min-width: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  font-size: 13px !important;
+  padding: 0 !important;
+  color: #333 !important;
+  height: 100% !important;
+  font-family: 'Lato', sans-serif !important;
 }
 
 .locationModal .headerSearch input::placeholder {
@@ -103,54 +332,249 @@ font-size: 18px; color: rgba(0, 0, 0, 0.8); width: 100%; height: 95%; border: no
 }
 
 .locationModal .headerSearch button {
-  position: absolute;        /* ✅ no longer absolute */
-  min-width: 14px ; align-items: center; display :flex; justify-content: center;
-  height: 14px ;      
-  width: 14px ;
-  border-radius: 8px !important; 
-  background-color: rgb(109, 6, 6)919 !important;
-  
-  padding: 0 ;
-  transition: background 0.2s ease !important; 
-  
-  transform: translateY(-10px) translateX(16px);
+  position: relative !important;
+  top: unset !important;
+  right: unset !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+  min-width: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  transition: background 0.15s ease !important;
 }
+
 .locationModal .headerSearch button:hover {
-  background-color: rgba(0, 0, 0, 0.07) !important;
+  background:transparent !important;
 }
 
 .locationModal .headerSearch button svg {
-  font-size: 16px;height: 20px; width: 20px;
+  font-size: 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  color: #2bbef9 !important;
 }
 
-  
+.locationModal .countryList {
+  margin-bottom: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.locationModal .countryList::-webkit-scrollbar { width: 4px; }
+.locationModal .countryList::-webkit-scrollbar-track { background: transparent; }
+.locationModal .countryList::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.13);
+  border-radius: 4px;
+}
+
+.locationModal .countryList li {
+  width: 100%;
+  list-style: none;
+}
+
+.locationModal .countryList li button {
+  width: 100%;
+  text-transform: capitalize !important;
+  color: rgba(0, 0, 0, 0.72) !important;
+  justify-content: flex-start !important;
+  padding: 10px 14px !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+.locationModal .countryList li button:hover {
+  background: #f0faff !important;
+  color: #2bbef9 !important;
+}
+
+.locationModal .countryList li button.active {
+  background: #e6f7ff !important;
+  color: #2bbef9 !important;
+  font-weight: 700 !important;
+}
+
+.locationModal .close_btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  color: rgba(0, 0, 0, 0.42) !important;
+  min-width: 34px !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  transition: background 0.2s ease !important;
+}
+
+.locationModal .close_btn:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+   FIX 1: border-top removed — only bottom border
+   FIX 2: allCatTab restored to original size
+   FIX 3: nav link hover — no underline, no blue bg
+───────────────────────────────────────── */
+nav {
+  border-top: none;                            /* FIX: removed top border */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* only bottom border */
+  padding: 6px 0;
+  background: #fff;
+}
+
+nav .navPart1 {
+  max-width: 20%;
+  flex: 0 0 20%;
+  display: flex;
+  align-items: center;
+}
+
+nav .navPart2 {
+  max-width: 80%;
+  flex: 0 0 80%;
+  display: flex;
+  align-items: center;
+}
+
+nav .navPart1 .catWrapper { position: relative; } 
+nav .navPart1 .catWrapper .sidebarNav {width: 100%; height: 0px; opacity: 0; transition: all 0.2s ease ; background: #fff; position: absolute; top :136%; left:0px; border:1px solid rgba(0, 0, 0, 0.1); padding: 0px 15px; transition: all 0.2s; visibility: hidden;  display: block } 
+nav .navPart1 .catWrapper .sidebarNav ul li {width: 100%; list-style: none; padding: 10px 15px; }
+nav .navPart1 .catWrapper .sidebarNav ul li button { color: #000; width: 100%; justify-content: flex-start; text-transform: capitalize!important;}
+nav .navPart1 .catWrapper .sidebarNav ul li button:hover { background: transparent; color: #2bbef9; padding-left: 24px; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease; }   /*new changers*/
+nav .navPart1 .catWrapper .sidebarNav.open{height:auto; opacity: 1; visibility: inherit;}
 
 
 
-    .locationModal .countryList {  margin-bottom: 0px; max-height: 300px; overflow-y: scroll; overflow-x: hidden;  }
-    .locationModal .countryList li { width: 100%; list-style: none; }
-    .locationModal .countryList li button{ width: 100%; text-transform: capitalize!important;  color: rgba(0, 0, 0, 0.8)!important;
-       justify-content: flex-start!important; padding: 10px 20px !important; }
-    .locationModal .countryList li button:hover { background: #f1f1f1; }
-    .locationModal .countryList li button.active {background : #ccc !important;}
-    
-       .locationModal .close_btn { position: absolute; top: 15px; right: 15px; color: rgba(0, 0, 0, 0.6)!important; min-width: 40px!important; width: 40px!important; height: 40px!important; border-radius: 50%!important; }
 
 
+/* FIX 2: allCatTab — restored to original padding & size */
+nav .allCatTab {
+  background: #2bbef9 !important;
+  padding: 10px 15px !important;             /* RESTORED: original values */
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-      nav .navPart1 {  max-width: 20% ; flex: 0 0 20%; }
-      nav .navPart2 {  max-width: 80% ; flex: 0 0 80%; }
+nav .allCatTab:hover {
+  background: #2bbef9 !important;            /* RESTORED: same as original, no change on hover */
+}
 
-      nav .allCatTab{background: #2bbef9; padding: 10px 15px !important; border-radius: 30px; }
-      nav .allCatTab * {color: #fff; }   
-      nav .allCatTab:hover { background: #2bbef9; }
-      nav .allCatTab .text { font-weight: 600; font-size: 14px;}   
-      nav .allCatTab .icon1 svg { font-size: 20px !important; }                              
-      nav .allCatTab .icon2 svg { font-size: 12px !important; }
+nav .allCatTab * { color: #fff; }
 
-      nav .navPart2 ul{ margin-bottom: 0px;  }
-      nav .navPart2 ul li a button{ font-size: 14px; font-weight: 600; text-decoration: none; 
-        color: rgba(0, 0, 0, 0.6); text-transform: uppercase ; display: flex; align-items: center; padding: 10px 14px; transition: all 0.2s ease-in-out; border-radius: 20px; }
-        nav .navPart2 ul li a svg { font-size: 20px; }
-        nav .navPart2 ul li a:hover { color: #2bbef9; background: #f0faff; }
+nav .allCatTab .text {
+  font-weight: 600;                          /* RESTORED: original weight */
+  font-size: 14px;
+}
 
+nav .allCatTab .icon1 svg { font-size: 20px !important; }
+nav .allCatTab .icon2 svg { font-size: 12px !important; }
+
+nav .navPart2 ul {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* FIX 3: nav links — no underline, transparent hover background */
+nav .navPart2 ul li a {
+  text-decoration: none !important;         /* FIX: removes underline */
+}
+
+nav .navPart2 ul li a button {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-decoration: none !important;         /* FIX: double ensure no underline */
+  transition: color 0.2s ease-in-out;
+  background: transparent !important;       /* FIX: no background by default */
+}
+
+nav .navPart2 ul li a svg { font-size: 20px; }
+
+/* FIX 3: hover — colour change only, no blue background, no underline */
+nav .navPart2 ul li a:hover {
+  text-decoration: none !important;
+  background: transparent !important;       /* FIX: was #f0faff blue tint */
+}
+
+nav .navPart2 ul li a:hover button {
+  color: #2bbef9;
+  background: transparent !important;       /* FIX: no hover background */
+  text-decoration: none !important;
+}
+
+nav .navPart2 ul li { position: relative; }
+
+
+/* ── Submenu ── */
+nav .navPart2 ul li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 190px;
+  z-index: 999;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.11), 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+nav .navPart2 ul li:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(4px);
+  pointer-events: all;
+}
+
+nav .navPart2 ul li .submenu a {
+  display: block;
+  width: 100%;
+  text-decoration: none !important;
+}
+
+nav .navPart2 ul li .submenu a button {
+  width: 100%;
+  justify-content: flex-start !important;
+  border-radius: 0 !important;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.68) !important;
+  padding: 11px 18px !important;
+  letter-spacing: 0.2px;
+  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+nav .navPart2 ul li .submenu a button:hover {
+  background: #f0faff !important;
+  color: #2bbef9 !important;
+  padding-left: 24px !important;
+}
+
+nav .navPart2 ul li .submenu a + a button {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
