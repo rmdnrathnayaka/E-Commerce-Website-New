@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Navigation = () => {
 
-  const [isOpenSidebarVal,setisopenSidebarVal]  = useState(true); 
+  const [isOpenSidebarVal,setisopenSidebarVal]  = useState(false); 
 
   return (
     <nav>
@@ -22,7 +22,19 @@ const Navigation = () => {
             </Button>
             <div className={`sidebarNav ${isOpenSidebarVal===true?'open':''}`}>
               <ul>
-                  <li><Link to="/"><Button>MEN</Button></Link></li>
+                  <li><Link to="/"><Button>MEN</Button></Link>
+                     <div className='submenu'>
+                     <Link to="/"><Button>Shirts</Button></Link>
+                     <Link to="/"><Button>Trousers</Button></Link>
+                     <Link to="/"><Button>Jackets</Button></Link>
+                     <Link to="/"><Button>Shoes</Button></Link>
+                     <Link to="/"><Button>Watches</Button></Link>
+                     <Link to="/"><Button>Accessories</Button></Link>
+
+
+                   </div>
+                  
+                  </li>
                   <li><Link to="/"><Button>WOMEN</Button></Link></li>
                   <li><Link to="/"><Button>BEAUTY</Button></Link></li>
                   <li><Link to="/"><Button>WATCHES</Button></Link></li>

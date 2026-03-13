@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url(https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css);
+
+html, body {
+  overflow-x: hidden;
+}
+
+html, body {
+  overflow-y: hidden;
+}
+
 
 /* ─────────────────────────────────────────
    RESET & BASE
@@ -14,7 +25,7 @@ body {
   font-size: 14px;
 }
 
-.bg-purple { background: #0425a7 !important; }
+.bg-purple { background: #1a5fcb !important; }
 
 @media (min-width: 1300px) {
   .container,
@@ -25,6 +36,7 @@ body {
     max-width: 1200px;
   }
 }
+
 
 ::-webkit-slider-thumb { background: #ccc !important; }
 ::-webkit-slider-track  { background: transparent !important; }
@@ -113,7 +125,7 @@ body {
 .headerWrapper .header .part2 .countryDrop .name {
   font-size: 14px !important;
   text-transform: capitalize !important;
-  color: rgba(5, 99, 181, 0.6) !important;
+  color: rgba(0, 0, 0, 0.6) !important;
   font-weight: 700;
   line-height: 20px;
 }
@@ -130,8 +142,8 @@ body {
   flex: 1;
   max-width: 520px;
   min-width: 0;
-  height: 56px;
-  background: rgba(0, 0, 0, 0.05);
+  height: 50px;
+  background: #fff;
   border-radius: 40px;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   padding: 0 6px 0 20px;
@@ -160,7 +172,7 @@ body {
 }
 
 .headerSearch input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .headerSearch button {
@@ -206,7 +218,7 @@ header .part3 .circle {
   height: 45px !important;
   width: 45px !important;
   border-radius: 50% !important;
-  color: #555 !important;
+  color: #ea2b0f !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   display: flex !important;
   align-items: center !important;
@@ -216,14 +228,38 @@ header .part3 .circle {
 }
 
 header .part3 .circle:hover {
-  border-color: #2bbef9 !important;
-  color: #2bbef9 !important;
-  background: #f0faff !important;
+  border-color: #ea2b0f !important;
+  color: #ea2b0f !important;
+  background: #fff1ee !important;
 }
 
 header .part3 .circle svg {
   font-size: 16px !important;
 }
+
+header .part3 .circle1 {
+  min-width: 45px !important;
+  height: 45px !important;
+  width: 45px !important;
+  border-radius: 50% !important;
+  color:  #2bbef9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fff !important;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
+
+header .part3 .circle1:hover {
+  border-color:  #2bbef9 !important;
+  color:  #2bbef9 !important;
+  background: #eef7ff !important;
+}
+
+header .part3 .circle1 svg {
+  font-size: 16px !important;
+}
+
 
 .cartTab {
   display: flex;
@@ -239,7 +275,7 @@ header .part3 .circle svg {
 }
 
 .cartTab button {
-  min-width: 45px !important;
+  min-width: 45px !important; 
   height: 45px !important;
   width: 45px !important;
   border-radius: 50% !important;
@@ -247,11 +283,11 @@ header .part3 .circle svg {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition: background 0.2s ease, transform 0.15s ease; 
 }
 
 .cartTab button:hover {
-  background: #ffddd5 !important;
+  background: #ffddd5 !important;  
   transform: scale(1.06);
 }
 
@@ -403,19 +439,19 @@ header .part3 .circle svg {
 }
 
 .locationModal .close_btn {
-  position: absolute;
+  position: absolute;     border: 1px solid transparent;
   top: 14px;
   right: 14px;
-  color: rgba(0, 0, 0, 0.42) !important;
-  min-width: 34px !important;
-  width: 34px !important;
-  height: 34px !important;
+  color: #ea2b0f!important;
+  min-width: 50px !important;
+  width: 50px !important;
+  height: 50px !important;
   border-radius: 50% !important;
-  transition: background 0.2s ease !important;
+  
 }
 
 .locationModal .close_btn:hover {
-  background: rgba(0, 0, 0, 0.06) !important;
+  background: transparent !important; border: 1px solid transparent !important; font-size: 20px !important; font:25px ;
 }
 
 
@@ -447,19 +483,23 @@ nav .navPart2 {
 }
 
 nav .navPart1 .catWrapper { position: relative; } 
-nav .navPart1 .catWrapper .sidebarNav {width: 100%; height: 0px; opacity: 0; transition: all 0.2s ease ; background: #fff; position: absolute; top :136%; left:0px; border:1px solid rgba(0, 0, 0, 0.1); padding: 0px 15px; transition: all 0.2s; visibility: hidden;  display: block } 
-nav .navPart1 .catWrapper .sidebarNav ul li {width: 100%; list-style: none; padding: 10px 15px; }
+nav .navPart1 .catWrapper .sidebarNav {width: 100%; height: 0px; opacity: 0; transition: all 0.2s ease ; background: #fff; position: absolute; top :116%; left:0px; border:1px solid rgba(0, 0, 0, 0.1); padding: 0px 15px;  visibility: hidden;  display: block; z-index: 100; } 
+nav .navPart1 .catWrapper .sidebarNav ul li {width: 100%; list-style: none; padding: 10px 15px;  }
 nav .navPart1 .catWrapper .sidebarNav ul li button { color: #000; width: 100%; justify-content: flex-start; text-transform: capitalize!important;}
 nav .navPart1 .catWrapper .sidebarNav ul li button:hover { background: transparent; color: #2bbef9; padding-left: 24px; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease; }   /*new changers*/
 nav .navPart1 .catWrapper .sidebarNav.open{height:auto; opacity: 1; visibility: inherit;}
 
+nav .navPart1 .catWrapper .sidebarNav ul li {position: relative;}
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu {position: absolute; top: 0px; left : 180px; width: 250px; height: auto; background: #fff; z-index: 100;   display: none; opacity: 0; visibility: hidden; transition: all 0.2 ease-in-out;  }
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu { display: block; opacity: 1; visibility: inherit; left: 100%; padding :20px }
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu button {border-radius: 0px!important;  }
 
 
 
 
 /* FIX 2: allCatTab — restored to original padding & size */
 nav .allCatTab {
-  background: #2bbef9 !important;
+  background: #3174e0 !important;
   padding: 10px 15px !important;             /* RESTORED: original values */
   border-radius: 30px;
   display: flex;
@@ -468,7 +508,7 @@ nav .allCatTab {
 }
 
 nav .allCatTab:hover {
-  background: #2bbef9 !important;            /* RESTORED: same as original, no change on hover */
+  background: #3174e0 !important;            /* RESTORED: same as original, no change on hover */
 }
 
 nav .allCatTab * { color: #fff; }
@@ -521,7 +561,7 @@ nav .navPart2 ul li a:hover button {
   text-decoration: none !important;
 }
 
-nav .navPart2 ul li { position: relative; }
+nav .navPart2 ul li { position: relative; z-index: 999 }
 
 
 /* ── Submenu ── */
@@ -541,6 +581,7 @@ nav .navPart2 ul li .submenu {
   transform: translateY(10px);
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 100;
 }
 
 nav .navPart2 ul li:hover .submenu {
@@ -578,3 +619,53 @@ nav .navPart2 ul li .submenu a button:hover {
 nav .navPart2 ul li .submenu a + a button {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+
+
+
+/*homebanner section */
+
+
+.homeBannerSection {
+  height: calc(96vh - 179px);
+  overflow: hidden;
+  position: relative;
+}
+
+.homeBannerSection .slick-slider,
+.homeBannerSection .slick-list,
+.homeBannerSection .slick-track,
+.homeBannerSection .slick-slide,
+.homeBannerSection .slick-slide > div,
+.homeBannerSection .item {
+  height: 100%;
+}
+
+.homeBannerSection .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; display: block;
+}
+
+.homeBannerSection * { outline: none!important; }
+
+.homeBannerSection .slick-arrow {
+  position: absolute; 
+  top: 45%;
+  z-index: 100;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeBannerSection .slick-arrow.slick-next { right: 25px !important; }
+.homeBannerSection .slick-arrow.slick-prev { left: 25px !important; }
+.homeBannerSection .slick-arrow.slick-next::before { color: #fff; font-family: FontAwesome !important;  }
+.homeBannerSection .slick-arrow.slick-prev::before { color: #fff; font-family: FontAwesome !important; }
+.homeBannerSection .slick-slider{ display: block !important;}
+.homeBannerSection .slick-track { display: flex !important;}
+.homeBannerSection .slick-list{ overflow: hidden !important}

@@ -35,7 +35,7 @@ const Header = () => {
               <SearchBox />
 
               <div className="part3 d-flex align-items-center ml-auto">
-                <Button className="circle mr-3"><FaRegUser /></Button>
+                <Button className="circle1 mr-3"><FaRegUser /></Button>
 
                 <div className="ml-auto cartTab d-flex align-items-center">
                   <span className="price">{context.cartTotal ?? '$0.00'}</span>
