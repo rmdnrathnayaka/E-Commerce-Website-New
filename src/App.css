@@ -6,10 +6,6 @@ html, body {
   overflow-x: hidden;
 }
 
-html, body {
-  overflow-y: hidden;
-}
-
 
 /* ─────────────────────────────────────────
    RESET & BASE
@@ -22,7 +18,7 @@ html, body {
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 14px;
+  font-size: 14px; color: rgba(0, 0, 0, 0.8);
 }
 
 .bg-purple { background: #1a5fcb !important; }
@@ -36,6 +32,9 @@ body {
     max-width: 1200px;
   }
 }
+
+.cursor {cursor: pointer;}
+.text-light {color: #c00a0a;}
 
 
 ::-webkit-slider-thumb { background: #ccc !important; }
@@ -482,17 +481,226 @@ nav .navPart2 {
   align-items: center;
 }
 
-nav .navPart1 .catWrapper { position: relative; } 
-nav .navPart1 .catWrapper .sidebarNav {width: 100%; height: 0px; opacity: 0; transition: all 0.2s ease ; background: #fff; position: absolute; top :116%; left:0px; border:1px solid rgba(0, 0, 0, 0.1); padding: 0px 15px;  visibility: hidden;  display: block; z-index: 100; } 
-nav .navPart1 .catWrapper .sidebarNav ul li {width: 100%; list-style: none; padding: 10px 15px;  }
-nav .navPart1 .catWrapper .sidebarNav ul li button { color: #000; width: 100%; justify-content: flex-start; text-transform: capitalize!important;}
-nav .navPart1 .catWrapper .sidebarNav ul li button:hover { background: transparent; color: #2bbef9; padding-left: 24px; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease; }   /*new changers*/
-nav .navPart1 .catWrapper .sidebarNav.open{height:auto; opacity: 1; visibility: inherit;}
+/*new changers*/
 
-nav .navPart1 .catWrapper .sidebarNav ul li {position: relative;}
-nav .navPart1 .catWrapper .sidebarNav ul li .submenu {position: absolute; top: 0px; left : 180px; width: 250px; height: auto; background: #fff; z-index: 100;   display: none; opacity: 0; visibility: hidden; transition: all 0.2 ease-in-out;  }
-nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu { display: block; opacity: 1; visibility: inherit; left: 100%; padding :20px }
-nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu button {border-radius: 0px!important;  }
+
+
+
+
+
+
+
+
+/* ══════════════════════════════════════════
+   SIDEBAR NAV — COMPLETE REWRITE (CLEAN)
+══════════════════════════════════════════ */
+
+nav .navPart1 .catWrapper {
+  position: relative;
+}
+
+/* ── Main sidebar panel ── */
+nav .navPart1 .catWrapper .sidebarNav {
+  position: absolute;
+  top: 116%;
+  left: 0;
+  width: 220px;              /* fixed width — left panel only */
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 0;
+  z-index: 1000;
+
+  /* hide by default */
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;          /* clips to border-radius when closed */
+  transition: max-height 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
+}
+
+nav .navPart1 .catWrapper .sidebarNav.open {
+  max-height: 700px;
+  opacity: 1;
+  visibility: visible;
+  overflow: visible;         /* must be visible when open so submenu escapes */
+  padding: 6px 0;
+}
+
+/* ── UL reset ── */
+nav .navPart1 .catWrapper .sidebarNav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ── Each LI ── */
+nav .navPart1 .catWrapper .sidebarNav ul li {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  position: relative;        /* anchor for submenu */
+}
+
+/* ── Divider between rows ── */
+nav .navPart1 .catWrapper .sidebarNav ul li + li {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ── Category button ── */
+nav .navPart1 .catWrapper .sidebarNav ul li a {
+  text-decoration: none !important;
+  display: block;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li a button {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;  /* text left, arrow right */
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.6px !important;
+  color: rgba(0, 0, 0, 0.72) !important;
+  padding: 12px 16px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+/* ── Arrow SVG inside button ── */
+nav .navPart1 .catWrapper .sidebarNav ul li a button svg {
+  font-size: 11px !important;
+  opacity: 0.35;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ── Hover: highlight entire row ── */
+nav .navPart1 .catWrapper .sidebarNav ul li:hover > a button {
+  background: #f0faff !important;
+  color: #2bbef9 !important;
+  padding-left: 22px !important;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover > a button svg {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════
+   SUBMENU PANEL (right side)
+══════════════════════════════════════════ */
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu {
+  position: absolute;
+  top: -7px;                 /* aligns with the li row */
+  left: 100%;                /* sits right of the sidebar */
+  width: 210px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 2px solid rgba(43, 190, 249, 0.25);  /* blue accent divider */
+  border-radius: 0 12px 12px 0;
+  box-shadow: 6px 8px 24px rgba(0,0,0,0.09);
+  padding: 6px 0;
+  z-index: 1001;             /* above sidebar */
+
+  /* hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+}
+
+/* ── Show submenu on li hover ── */
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+/* ── Submenu heading (via data-title) ── */
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu::before {
+  content: attr(data-title);
+  display: block;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.32);
+  padding: 8px 16px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 4px;
+}
+
+/* ── Submenu links ── */
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu a {
+  display: block;
+  text-decoration: none !important;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu a button {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  border-radius: 0 !important;
+  text-transform: capitalize !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  padding: 10px 16px !important;
+  background: transparent !important;
+  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu a button:hover {
+  background: #f0faff !important;
+  color: #2bbef9 !important;
+  padding-left: 22px !important;
+}
+
+/* ── Dividers between submenu items ── */
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu a + a button {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -626,46 +834,556 @@ nav .navPart2 ul li .submenu a + a button {
 /*homebanner section */
 
 
+
+/* ══════════════════════════════
+   HOME BANNER
+══════════════════════════════ */
 .homeBannerSection {
   height: calc(96vh - 179px);
   overflow: hidden;
   position: relative;
 }
 
-.homeBannerSection .slick-slider,
-.homeBannerSection .slick-list,
-.homeBannerSection .slick-track,
-.homeBannerSection .slick-slide,
-.homeBannerSection .slick-slide > div,
+.homeBannerSection .swiper,
+.homeBannerSection .swiper-wrapper,
+.homeBannerSection .swiper-slide,
 .homeBannerSection .item {
   height: 100%;
+}
+
+/* ── Banner image ── */
+.homeBannerSection .item {
+  position: relative;
+  overflow: hidden;
 }
 
 .homeBannerSection .item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; display: block;
+  object-fit: cover;
+  display: block;
 }
 
-.homeBannerSection * { outline: none!important; }
+/* ── Dark gradient overlay ── */
+.homeBannerSection .item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.0) 100%
+  );
+  z-index: 1;
+}
 
-.homeBannerSection .slick-arrow {
-  position: absolute; 
-  top: 45%;
-  z-index: 100;
-  width: 40px !important;
-  height: 40px !important;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 100%;
-  display: flex !important;
+/* ── Text content overlay ── */
+.homeBannerSection .bannerContent {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  max-width: 420px;
+  padding: 0 20px;
+}
+
+.homeBannerSection .bannerContent.align-left  { left: 8%; }
+.homeBannerSection .bannerContent.align-right {
+  right: 8%;
+  left: auto;
+  text-align: right;
+}
+
+/* flip gradient for right-aligned */
+.homeBannerSection .item:has(.align-right)::after {
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.0) 100%
+  );
+}
+
+/* ── Tag pill ── */
+.homeBannerSection .bannerTag {
+  display: inline-block;
+  background: #2bbef9;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+/* ── Big title ── */
+.homeBannerSection .bannerTitle {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* ── Subtitle ── */
+.homeBannerSection .bannerSubtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 24px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ── CTA button ── */
+.homeBannerSection .bannerBtn {
+  display: inline-block;
+  background: #fff;
+  color: #111;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+
+.homeBannerSection .bannerBtn:hover {
+  background: #2bbef9;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════
+   SWIPER NAV ARROWS — plain arrows only
+══════════════════════════════ */
+.homeBannerSection .swiper-button-next,
+.homeBannerSection .swiper-button-prev {
+  width: 44px !important;
+  height: 44px !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-radius: 50% !important;
+  border: none !important;
+  box-shadow: none !important;
+  top: 50% !important;
+  transition: none !important;
+}
+
+.homeBannerSection .swiper-button-next:hover,
+.homeBannerSection .swiper-button-prev:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* arrow icon */
+.homeBannerSection .swiper-button-next::after,
+.homeBannerSection .swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  color: rgba(255,255,255,0.5) !important;
+  transition: color 0.2s ease !important;
+}
+
+/* brighten arrow on hover */
+.homeBannerSection .swiper-button-next:hover::after,
+.homeBannerSection .swiper-button-prev:hover::after {
+  color: rgba(255,255,255,1) !important;
+}
+
+.homeBannerSection .swiper-button-prev { left: 20px !important; }
+.homeBannerSection .swiper-button-next { right: 20px !important; }
+
+
+
+
+
+
+
+
+
+
+
+.homeProducts { padding: 25px 0; } 
+.homeProducts .banner {width: 100%;  border-radius: 7px; overflow: hidden;  transform: translateX(-75px);  /* same as margin-left: -75px visually */
+  width: calc(100% + 75px); } 
+.homeProducts .col-md-3{ padding-left: 0;  overflow: visible!important; }
+.text{ color:#555; font-size:14px;}
+.productRow .hd {font-size: 25px; font-weight: 600;}
+ .viewAllBtn{padding: 8px 25px!important; background:#fff; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 30px!important; color: #414141 !important ; font-weight: 600; text-transform: capitalize!important;  }
+ .viewAllBtn svg{font-size: 20px; }
+ .productItem{width: 100%; height: auto; border: 1px solid rgba(0, 0, 0, 0.1)}
+
+
+ /*new added codes for slideshow of home page*/
+
+
+
+
+ /* ══════════════════════════════
+   HOME PRODUCTS SECTION
+══════════════════════════════ */
+.homeProducts {
+  padding: 25px 0 40px;
+}
+
+.homeProducts .row {
+  --bs-gutter-x: 0;
+}
+
+/* ── Left banner ── */
+.homeProducts .banner {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.homeProducts .banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ── Section header ── */
+.homeProducts .sectionHeader {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 20px !important;
+}
+
+.homeProducts .hd {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.85);
+  margin-bottom: 4px;
+}
+
+.homeProducts .text-sml {
+  font-size: 13px;
+  color: rgba(0,0,0,0.4);
+}
+
+/* ── View All button ── */
+.viewAllBtn {
+  white-space: nowrap;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #2bbef9 !important;
+  border: 1px solid #2bbef9 !important;
+  border-radius: 20px !important;
+  padding: 6px 18px !important;
+  margin-left: auto;
+  gap: 5px;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+.viewAllBtn:hover {
+  background: #2bbef9 !important;
+  color: #fff !important;
+}
+
+/* ── Product row with swiper ── */
+.homeProducts .product_row {
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+
+/* ══════════════════════════════
+   PRODUCT CARD
+══════════════════════════════ */
+.homeProducts .productItem {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.homeProducts .productItem:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.11);
+  transform: translateY(-4px);
+}
+
+/* ── Out of stock card ── */
+.homeProducts .productItem.outOfStock {
+  opacity: 0.82;
+}
+
+/* ── Badge (Sale / New / Hot) ── */
+.homeProducts .productItem .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.badge-sale { background: #ff4d4f; color: #fff; }
+.badge-new  { background: #52c41a; color: #fff; }
+.badge-hot  { background: #fa8c16; color: #fff; }
+
+/* ── Action buttons (heart + zoom) ── */
+.homeProducts .productItem .actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.homeProducts .productItem:hover .actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.homeProducts .productItem .actionBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+/* Heart button */
+.homeProducts .productItem .wishlistBtn svg {
+  font-size: 14px;
+  color: rgba(0,0,0,0.4);
+  transition: color 0.2s ease;
+}
+
+.homeProducts .productItem .wishlistBtn:hover {
+  background: #fff0f0;
+  transform: scale(1.12);
+}
+
+.homeProducts .productItem .wishlistBtn:hover svg {
+  color: #ff4d4f;
+}
+
+/* Zoom button */
+.homeProducts .productItem .zoomBtn svg {
+  font-size: 15px;
+  color: rgba(0,0,0,0.4);
+  transition: color 0.2s ease;
+}
+
+.homeProducts .productItem .zoomBtn:hover {
+  background: #f0faff;
+  transform: scale(1.12);
+}
+
+.homeProducts .productItem .zoomBtn:hover svg {
+  color: #2bbef9;
+}
+
+/* ── Image wrapper ── */
+.homeProducts .productItem .imgWrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.homeProducts .productItem .imgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.homeProducts .productItem:hover .imgWrapper img {
+  transform: scale(1.07);
+}
+
+/* Out of stock image overlay */
+.homeProducts .productItem .outOfStockOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.homeBannerSection .slick-arrow.slick-next { right: 25px !important; }
-.homeBannerSection .slick-arrow.slick-prev { left: 25px !important; }
-.homeBannerSection .slick-arrow.slick-next::before { color: #fff; font-family: FontAwesome !important;  }
-.homeBannerSection .slick-arrow.slick-prev::before { color: #fff; font-family: FontAwesome !important; }
-.homeBannerSection .slick-slider{ display: block !important;}
-.homeBannerSection .slick-track { display: flex !important;}
-.homeBannerSection .slick-list{ overflow: hidden !important}
+.homeProducts .productItem .outOfStockOverlay span {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ── Product info block ── */
+.homeProducts .productItem .productInfo {
+  padding: 10px 12px 12px;
+}
+
+/* Stock status */
+.homeProducts .stockStatus {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin: 0 0 5px;
+}
+
+.homeProducts .stockStatus.inStock  { color: #52c41a; }
+.homeProducts .stockStatus.noStock  { color: #ff4d4f; }
+
+/* Product name */
+.homeProducts .productItem .productInfo h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.82);
+  margin: 0 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Price row */
+.homeProducts .productItem .priceRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.homeProducts .productItem .price {
+  font-size: 15px;
+  font-weight: 800;
+  color: #2bbef9;
+}
+
+.homeProducts .productItem .oldPrice {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.35);
+  text-decoration: line-through;
+}
+
+/* Discount % in red */
+.homeProducts .discount {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ff4d4f;
+  background: #fff2f2;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ── Add to Cart button ── */
+.homeProducts .addToCartBtn {
+  width: 100% !important;
+  background: #2bbef9 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  padding: 8px 0 !important;
+  gap: 7px;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  transition: background 0.2s ease, transform 0.15s ease !important;
+  margin-top: 4px;
+}
+
+.homeProducts .addToCartBtn:hover {
+  background: #1aaee8 !important;
+  transform: translateY(-1px);
+}
+
+.homeProducts .addToCartBtn.disabled,
+.homeProducts .addToCartBtn:disabled {
+  background: rgba(0,0,0,0.10) !important;
+  color: rgba(0,0,0,0.35) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* ══════════════════════════════
+   SWIPER CUSTOM STYLING
+══════════════════════════════ */
+
+/* ── Remove ALL default swiper button styles ── */
+.homeProducts .swiper-button-next,
+.homeProducts .swiper-button-prev {
+  width: 34px !important;
+  height: 34px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  top: 40% !important;
+}
+
+/* ── Arrow color — always visible ── */
+.homeProducts .swiper-button-next::after,
+.homeProducts .swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  color: rgba(0,0,0,0.4) !important;   /* grey by default */
+  transition: color 0.2s ease;
+}
+
+/* ── Hover — just darken the arrow, no background ── */
+.homeProducts .swiper-button-next:hover,
+.homeProducts .swiper-button-prev:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.homeProducts .swiper-button-next:hover::after,
+.homeProducts .swiper-button-prev:hover::after {
+  color: rgba(0,0,0,0.85) !important;  /* just darker arrow on hover */
+}
+
+/* Pagination dots */
+.homeProducts .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: rgba(0,0,0,0.2);
+  opacity: 1;
+}
+
+.homeProducts .swiper-pagination-bullet-active {
+  background: #2bbef9;
+  width: 20px;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+} 

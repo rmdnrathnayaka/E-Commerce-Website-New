@@ -3,6 +3,9 @@ import { IoIosMenu } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import { FaAngleRight } from "react-icons/fa6";
+
+
 
 const Navigation = () => {
 
@@ -22,8 +25,8 @@ const Navigation = () => {
             </Button>
             <div className={`sidebarNav ${isOpenSidebarVal===true?'open':''}`}>
               <ul>
-                  <li><Link to="/"><Button>MEN</Button></Link>
-                     <div className='submenu'>
+                  <li><Link to="/"><Button>MEN <FaAngleRight className='ml-auto'/></Button></Link>
+                     <div className='submenu' data-title="Men's Fashion" >
                      <Link to="/"><Button>Shirts</Button></Link>
                      <Link to="/"><Button>Trousers</Button></Link>
                      <Link to="/"><Button>Jackets</Button></Link>
@@ -35,7 +38,18 @@ const Navigation = () => {
                    </div>
                   
                   </li>
-                  <li><Link to="/"><Button>WOMEN</Button></Link></li>
+                  <li><Link to="/"><Button>WOMEN<FaAngleRight className='ml-auto'/></Button></Link>
+                      <div className='submenu'data-title="Women's Fashion"> 
+                     
+                      <Link to="/"><Button>Shirts</Button></Link>
+                     <Link to="/"><Button>Trousers</Button></Link>
+                     <Link to="/"><Button>Jackets</Button></Link>
+                     <Link to="/"><Button>Shoes</Button></Link>
+                     <Link to="/"><Button>Watches</Button></Link>
+                     <Link to="/"><Button>Accessories</Button></Link>
+
+                      </div>
+                   </li>
                   <li><Link to="/"><Button>BEAUTY</Button></Link></li>
                   <li><Link to="/"><Button>WATCHES</Button></Link></li>
                   <li><Link to="/"><Button>KIDS</Button></Link></li>

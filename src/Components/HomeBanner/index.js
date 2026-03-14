@@ -1,45 +1,81 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 
 const HomeBanner = () => {
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay:true 
-
-  };
-
+  const banners = [
+    {
+      id: 1,
+      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&h=600&fit=crop&q=90",
+      tag: "New Arrivals",
+      title: "Spring\nCollection",
+      subtitle: "Discover the latest trends in women's fashion",
+      btn: "Shop Women",
+      align: "left"
+    },
+    {
+      id: 2,
+      img: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1400&h=600&fit=crop&q=90",
+      tag: "Up to 50% Off",
+      title: "Season\nSale",
+      subtitle: "Don't miss the biggest deals of the year",
+      btn: "Shop Sale",
+      align: "right"
+    },
+    {
+      id: 3,
+      img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&h=600&fit=crop&q=90",
+      tag: "Men's Edit",
+      title: "Premium\nStyle",
+      subtitle: "Elevate your wardrobe with our curated picks",
+      btn: "Shop Men",
+      align: "left"
+    },
+    {
+      id: 4,
+      img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&h=600&fit=crop&q=90",
+      tag: "Kids Collection",
+      title: "Fun &\nComfort",
+      subtitle: "Stylish clothing designed for active kids",
+      btn: "Shop Kids",
+      align: "right"
+    },
+  ];
 
   return (
     <div className="homeBannerSection">
-      <Slider {...settings}>
-        <div className="item">
-            <img src="https://mobilecdn.6thstreet.com/AllBanners/bmt/image_management_tool/2026/Kids/March/12-3-26/LCW%20brand%20day%20kids/LCW%20brand%20day%20kids/UNDER%2039/LCW%20UNDER-web-en_.jpg" alt="banner 1"   />
-        </div>
-       
-       <div className="item">
-            <img src="https://mobilecdn.6thstreet.com/AllBanners/bmt/image_management_tool/2026/Kids/March/12-3-26/skechers%20brand%20day%20kids%20hero/skechers%20brand%20day%20kids%20hero/UNDER%20149/web-en_.jpg" alt="banner 2" />
-        </div>
+      <Swiper
+        modules={[Navigation, Autoplay, EffectFade]}
+        effect="fade"
+        navigation={true}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop={true}
+        speed={800}
+      >
+        {banners.map((banner) => (
+          <SwiperSlide key={banner.id}>
+            <div className="item">
+              <img src={banner.img} alt={banner.title} />
 
-        <div className="item">
-            <img src="https://mobilecdn.6thstreet.com/AllBanners/bmt/image_management_tool/2026/Kids/March/11-3-26/great%20online%20sale_hero/great%20online%20sale_hero_/web-en_.jpg" alt="banner 3" />
-        </div>
-
-        <div className="item">
-            <img src="https://mobilecdn.6thstreet.com/AllBanners/bmt/image_management_tool/2026/Women/March/13-3-26/tommy%20hilfiger/web-en_.jpg" alt="banner 4" />
-        </div>
-
-     </Slider>
-
+              {/* overlay text */}
+              <div className={`bannerContent align-${banner.align}`}>
+                <span className="bannerTag">{banner.tag}</span>
+                <h2 className="bannerTitle">
+                  {banner.title.split('\n').map((line, i) => (
+                    <span key={i}>{line}<br /></span>
+                  ))}
+                </h2>
+                <p className="bannerSubtitle">{banner.subtitle}</p>
+                <button className="bannerBtn">{banner.btn} →</button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
