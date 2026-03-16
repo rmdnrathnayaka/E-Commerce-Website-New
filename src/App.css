@@ -1030,6 +1030,248 @@ nav .navPart2 ul li .submenu a + a button {
  /* ══════════════════════════════
    HOME PRODUCTS SECTION
 ══════════════════════════════ */
+
+
+
+
+
+
+
+
+
+
+
+.featuredCats {
+  padding: 36px 0 40px;
+  background: #f8f9fc;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+ 
+/* ── Header row ── */
+.featuredCats .featCatsHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+ 
+.featuredCats .featCatsHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+.featuredCats .featCatsEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #2bbef9;
+}
+ 
+.featuredCats .featCatsTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.85);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+ 
+.featCatsViewAll {
+  white-space: nowrap;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #2bbef9 !important;
+  border: 1px solid #2bbef9 !important;
+  border-radius: 20px !important;
+  padding: 6px 18px !important;
+  gap: 5px;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+ 
+.featCatsViewAll:hover {
+  background: #2bbef9 !important;
+  color: #fff !important;
+}
+ 
+/* ── Swiper container ── */
+.featuredCats .featCatsSwiper {
+  position: relative;
+}
+ 
+/* ── Category card ── */
+.featuredCats .catCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  cursor: pointer;
+}
+ 
+.featuredCats .catCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.13);
+}
+ 
+/* ── Image area ── */
+.featuredCats .catImgWrap {
+  position: relative;
+  width: 100%;
+  padding-top: 110%;        /* tall portrait ratio */
+  overflow: hidden;
+}
+ 
+.featuredCats .catImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+ 
+.featuredCats .catCard:hover .catImg {
+  transform: scale(1.08);
+}
+ 
+/* Gradient overlay — accent colour fades in on hover */
+.featuredCats .catGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.1) 55%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+ 
+.featuredCats .catCard:hover .catGradient {
+  opacity: 1;
+  background: linear-gradient(
+    to top,
+    var(--cat-accent, #333) 0%,
+    rgba(0, 0, 0, 0.25) 60%,
+    transparent 100%
+  );
+}
+ 
+/* "Shop Now" label — hidden by default, slides up on hover */
+.featuredCats .catShopNow {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--cat-accent, #333);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+ 
+.featuredCats .catCard:hover .catShopNow {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+ 
+/* ── Text info below image ── */
+.featuredCats .catInfo {
+  width: 100%;
+  padding: 10px 12px 12px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: #fff;
+  transition: background 0.25s ease;
+}
+ 
+.featuredCats .catCard:hover .catInfo {
+  background: #fafafa;
+}
+ 
+.featuredCats .catName {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.82);
+  margin: 0 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+ 
+.featuredCats .catCard:hover .catName {
+  color: var(--cat-accent, #2bbef9);
+}
+ 
+.featuredCats .catSub {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.38);
+  font-weight: 500;
+}
+ 
+/* ── Swiper nav arrows for categories ── */
+.featuredCats .swiper-button-next,
+.featuredCats .swiper-button-prev {
+  width: 36px !important;
+  height: 36px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  top: 45% !important;
+  transition: opacity 0.2s ease !important;
+}
+ 
+.featuredCats .swiper-button-next:hover,
+.featuredCats .swiper-button-prev:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+ 
+.featuredCats .swiper-button-next::after,
+.featuredCats .swiper-button-prev::after {
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  color: rgba(0, 0, 0, 0.35) !important;
+  transition: color 0.2s ease !important;
+}
+ 
+.featuredCats .swiper-button-next:hover::after,
+.featuredCats .swiper-button-prev:hover::after {
+  color: rgba(0, 0, 0, 0.75) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .homeProducts {
   padding: 25px 0 40px;
 }
@@ -1058,7 +1300,7 @@ nav .navPart2 ul li .submenu a + a button {
 .homeProducts .sectionHeader {
   padding-left: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: 20px !important;
 }
 
@@ -1067,13 +1309,18 @@ nav .navPart2 ul li .submenu a + a button {
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.85);
+  color: rgba(0, 0, 0, 0.85);
   margin-bottom: 4px;
+}
+
+/* New Products heading accent colour */
+.homeProducts .newHd {
+  color: #7c3aed;
 }
 
 .homeProducts .text-sml {
   font-size: 13px;
-  color: rgba(0,0,0,0.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 /* ── View All button ── */
@@ -1095,7 +1342,18 @@ nav .navPart2 ul li .submenu a + a button {
   color: #fff !important;
 }
 
-/* ── Product row with swiper ── */
+/* New products — purple accent */
+.viewAllBtnNew {
+  color: #7c3aed !important;
+  border: 1px solid #7c3aed !important;
+}
+
+.viewAllBtnNew:hover {
+  background: #7c3aed !important;
+  color: #fff !important;
+}
+
+/* ── Product row ── */
 .homeProducts .product_row {
   padding-left: 20px;
   padding-bottom: 30px;
@@ -1105,7 +1363,7 @@ nav .navPart2 ul li .submenu a + a button {
    PRODUCT CARD
 ══════════════════════════════ */
 .homeProducts .productItem {
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -1114,16 +1372,15 @@ nav .navPart2 ul li .submenu a + a button {
 }
 
 .homeProducts .productItem:hover {
-  box-shadow: 0 10px 28px rgba(0,0,0,0.11);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
   transform: translateY(-4px);
 }
 
-/* ── Out of stock card ── */
 .homeProducts .productItem.outOfStock {
   opacity: 0.82;
 }
 
-/* ── Badge (Sale / New / Hot) ── */
+/* ── Badge ── */
 .homeProducts .productItem .badge {
   position: absolute;
   top: 10px;
@@ -1138,10 +1395,10 @@ nav .navPart2 ul li .submenu a + a button {
 }
 
 .badge-sale { background: #ff4d4f; color: #fff; }
-.badge-new  { background: #52c41a; color: #fff; }
+.badge-new  { background: #7c3aed; color: #fff; }
 .badge-hot  { background: #fa8c16; color: #fff; }
 
-/* ── Action buttons (heart + zoom) ── */
+/* ── Action buttons ── */
 .homeProducts .productItem .actions {
   position: absolute;
   top: 10px;
@@ -1169,16 +1426,15 @@ nav .navPart2 ul li .submenu a + a button {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
   padding: 0;
 }
 
-/* Heart button */
 .homeProducts .productItem .wishlistBtn svg {
   font-size: 14px;
-  color: rgba(0,0,0,0.4);
+  color: rgba(0, 0, 0, 0.4);
   transition: color 0.2s ease;
 }
 
@@ -1191,10 +1447,9 @@ nav .navPart2 ul li .submenu a + a button {
   color: #ff4d4f;
 }
 
-/* Zoom button */
 .homeProducts .productItem .zoomBtn svg {
   font-size: 15px;
-  color: rgba(0,0,0,0.4);
+  color: rgba(0, 0, 0, 0.4);
   transition: color 0.2s ease;
 }
 
@@ -1227,18 +1482,17 @@ nav .navPart2 ul li .submenu a + a button {
   transform: scale(1.07);
 }
 
-/* Out of stock image overlay */
 .homeProducts .productItem .outOfStockOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .homeProducts .productItem .outOfStockOverlay span {
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   color: #fff;
   font-size: 11px;
   font-weight: 800;
@@ -1246,7 +1500,7 @@ nav .navPart2 ul li .submenu a + a button {
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* ── Product info block ── */
@@ -1259,24 +1513,51 @@ nav .navPart2 ul li .submenu a + a button {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.3px;
-  margin: 0 0 5px;
+  margin: 0 0 4px;
 }
 
-.homeProducts .stockStatus.inStock  { color: #52c41a; }
-.homeProducts .stockStatus.noStock  { color: #ff4d4f; }
+.homeProducts .stockStatus.inStock { color: #52c41a; }
+.homeProducts .stockStatus.noStock { color: #ff4d4f; }
 
 /* Product name */
 .homeProducts .productItem .productInfo h4 {
   font-size: 13px;
   font-weight: 700;
-  color: rgba(0,0,0,0.82);
+  color: rgba(0, 0, 0, 0.82);
   margin: 0 0 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Price row */
+/* ── Star rating row ── */
+.homeProducts .productItem .ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.homeProducts .productItem .stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  color: #faad14;
+  font-size: 12px;
+}
+
+.homeProducts .productItem .ratingScore {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.homeProducts .productItem .ratingCount {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* ── Price row ── */
 .homeProducts .productItem .priceRow {
   display: flex;
   align-items: center;
@@ -1294,11 +1575,10 @@ nav .navPart2 ul li .submenu a + a button {
 .homeProducts .productItem .oldPrice {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(0,0,0,0.35);
+  color: rgba(0, 0, 0, 0.35);
   text-decoration: line-through;
 }
 
-/* Discount % in red */
 .homeProducts .discount {
   font-size: 11px;
   font-weight: 800;
@@ -1331,8 +1611,8 @@ nav .navPart2 ul li .submenu a + a button {
 
 .homeProducts .addToCartBtn.disabled,
 .homeProducts .addToCartBtn:disabled {
-  background: rgba(0,0,0,0.10) !important;
-  color: rgba(0,0,0,0.35) !important;
+  background: rgba(0, 0, 0, 0.10) !important;
+  color: rgba(0, 0, 0, 0.35) !important;
   cursor: not-allowed !important;
   transform: none !important;
 }
@@ -1340,8 +1620,6 @@ nav .navPart2 ul li .submenu a + a button {
 /* ══════════════════════════════
    SWIPER CUSTOM STYLING
 ══════════════════════════════ */
-
-/* ── Remove ALL default swiper button styles ── */
 .homeProducts .swiper-button-next,
 .homeProducts .swiper-button-prev {
   width: 34px !important;
@@ -1352,16 +1630,14 @@ nav .navPart2 ul li .submenu a + a button {
   top: 40% !important;
 }
 
-/* ── Arrow color — always visible ── */
 .homeProducts .swiper-button-next::after,
 .homeProducts .swiper-button-prev::after {
   font-size: 14px !important;
   font-weight: 900 !important;
-  color: rgba(0,0,0,0.4) !important;   /* grey by default */
+  color: rgba(0, 0, 0, 0.4) !important;
   transition: color 0.2s ease;
 }
 
-/* ── Hover — just darken the arrow, no background ── */
 .homeProducts .swiper-button-next:hover,
 .homeProducts .swiper-button-prev:hover {
   background: transparent !important;
@@ -1370,14 +1646,13 @@ nav .navPart2 ul li .submenu a + a button {
 
 .homeProducts .swiper-button-next:hover::after,
 .homeProducts .swiper-button-prev:hover::after {
-  color: rgba(0,0,0,0.85) !important;  /* just darker arrow on hover */
+  color: rgba(0, 0, 0, 0.85) !important;
 }
 
-/* Pagination dots */
 .homeProducts .swiper-pagination-bullet {
   width: 7px;
   height: 7px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   opacity: 1;
 }
 
@@ -1386,4 +1661,147 @@ nav .navPart2 ul li .submenu a + a button {
   width: 20px;
   border-radius: 4px;
   transition: width 0.3s ease;
-} 
+}
+
+/* New Products section — purple pagination */
+.newProductsSection .swiper-pagination-bullet-active {
+  background: #7c3aed;
+}
+
+/* ══════════════════════════════
+   NEW PRODUCTS SECTION
+══════════════════════════════ */
+.newProductsSection {
+  padding-top: 10px;
+  background: linear-gradient(180deg, #faf8ff 0%, #ffffff 100%);
+  border-top: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+/* ── New products left banner (overlay style) ── */
+.newProductsSection .newBanner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 380px;
+  background: #1a0a2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.newProductsSection .newBannerImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  opacity: 0.55;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+.newProductsSection .newBanner:hover .newBannerImg {
+  transform: scale(1.04);
+  opacity: 0.45;
+}
+
+.newProductsSection .newBannerContent {
+  position: relative;
+  z-index: 2;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newProductsSection .newBannerTag {
+  display: inline-block;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.newProductsSection .newBannerTitle {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.newProductsSection .newBannerSub {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 180px;
+}
+
+.newProductsSection .newBannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  margin-top: 4px;
+}
+
+.newProductsSection .newBannerBtn:hover {
+  background: #7c3aed;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* New Products — "Add to Cart" button uses purple */
+.newProductsSection .addToCartBtn {
+  background: #7c3aed !important;
+}
+
+.newProductsSection .addToCartBtn:hover {
+  background: #6d28d9 !important;
+}
+
+/* New Products — price colour uses purple */
+.newProductsSection .productItem .price {
+  color: #7c3aed;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 767px) {
+  .homeProducts .banner,
+  .newProductsSection .newBanner {
+    min-height: 180px;
+    margin-bottom: 18px;
+  }
+
+  .newProductsSection .newBannerTitle {
+    font-size: 26px;
+  }
+
+  .homeProducts .product_row {
+    padding-left: 0;
+  }
+}
